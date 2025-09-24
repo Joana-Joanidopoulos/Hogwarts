@@ -104,13 +104,13 @@ document.addEventListener('DOMContentLoaded', function() {
             createMagicalParticles();
         });
 
-        // Auto-open envelope after 4 seconds if not clicked
+        // Auto-open envelope after 10 seconds if not clicked (increased for testing)
         setTimeout(() => {
             if (!envelope.classList.contains('opening')) {
                 openEnvelope();
                 createMagicalParticles();
             }
-        }, 4000);
+        }, 10000);
 
         // Add some hover effects
         envelope.addEventListener('mouseenter', function() {
