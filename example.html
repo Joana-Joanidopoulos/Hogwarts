@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Invite Generator</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 40px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.3);
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid #8B4513;
+        }
+        h1 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #8B4513;
+            border-radius: 5px;
+            background: rgba(245, 245, 220, 0.9);
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .generate-btn {
+            background: #8B4513;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s;
+        }
+        .generate-btn:hover {
+            background: #A0522D;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(139,69,19,0.2);
+            border-radius: 5px;
+            border-left: 4px solid #FFD700;
+        }
+        .result h3 {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        .invite-link {
+            background: rgba(245, 245, 220, 0.9);
+            color: #2F1B14;
+            padding: 10px;
+            border-radius: 5px;
+            word-break: break-all;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .example-links {
+            margin-top: 30px;
+        }
+        .example-links h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        .example-link {
+            display: block;
+            color: #87CEEB;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .example-link:hover {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧙‍♂️ Hogwarts Invite Generator ⚡</h1>
+        
+        <form id="inviteForm">
+            <div class="form-group">
+                <label for="name">Recipient Name:</label>
+                <input type="text" id="name" placeholder="e.g., Harry Potter">
+            </div>
+            
+            <div class="form-group">
+                <label for="event">Event Name:</label>
+                <input type="text" id="event" placeholder="e.g., Birthday Party">
+            </div>
+            
+            <div class="form-group">
+                <label for="date">Event Date:</label>
+                <input type="text" id="date" placeholder="e.g., July 31st">
+            </div>
+            
+            <div class="form-group">
+                <label for="time">Event Time:</label>
+                <input type="text" id="time" placeholder="e.g., 7:00 PM">
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Event Location:</label>
+                <input type="text" id="location" placeholder="e.g., The Burrow">
+            </div>
+            
+            <div class="form-group">
+                <label for="details">Event Description:</label>
+                <input type="text" id="details" placeholder="e.g., a magical birthday celebration">
+            </div>
+            
+            <button type="submit" class="generate-btn">Generate Magical Invite</button>
+        </form>
+        
+        <div id="result" class="result" style="display: none;">
+            <h3>Your Magical Invite Link:</h3>
+            <div class="invite-link" id="inviteLink"></div>
+            <p>Send this link to your guests and they'll receive a personalized Hogwarts letter!</p>
+        </div>
+        
+        <div class="example-links">
+            <h3>Example Invites:</h3>
+            <a href="index.html?name=Harry%20Potter&event=Birthday%20Party&date=July%2031st&time=7:00%20PM&location=The%20Burrow&details=a%20magical%20birthday%20celebration" class="example-link" target="_blank">
+                Harry Potter's Birthday Party
+            </a>
+            <a href="index.html?name=Hermione%20Granger&event=Study%20Group&date=Tomorrow&time=2:00%20PM&location=Hogwarts%20Library&details=an%20important%20study%20session" class="example-link" target="_blank">
+                Hermione's Study Group
+            </a>
+            <a href="index.html?name=Fellow%20Wizard&event=Halloween%20Ball&date=October%2031st&time=8:00%20PM&location=Great%20Hall&details=a%20spooktacular%20Halloween%20celebration" class="example-link" target="_blank">
+                Halloween Ball Invitation
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('inviteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const baseUrl = window.location.origin + window.location.pathname.replace('example.html', 'index.html');
+            const params = new URLSearchParams();
+            
+            const fields = ['name', 'event', 'date', 'time', 'location', 'details'];
+            fields.forEach(field => {
+                const value = document.getElementById(field).value.trim();
+                if (value) {
+                    params.append(field, value);
+                }
+            });
+            
+            const inviteUrl = baseUrl + '?' + params.toString();
+            document.getElementById('inviteLink').textContent = inviteUrl;
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
