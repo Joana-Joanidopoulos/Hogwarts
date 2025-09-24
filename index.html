@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogwarts Letter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background">
+        <div class="envelope-container">
+            <div class="envelope" id="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+            </div>
+        </div>
+        
+        <div class="letter-container" id="letterContainer">
+            <div class="letter">
+                <div class="letter-header">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMjgiIHN0cm9rZT0iIzc0NTkzNyIgc3Ryb2tlLXdpZHRoPSI0Ii8+CjxwYXRoIGQ9Ik0xNSAyNUwzMCA0MEw0NSAyNSIgc3Ryb2tlPSIjNzQ1OTM3IiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTIwIDM1TDMwIDQ1TDQwIDM1IiBzdHJva2U9IiM3NDU5MzciIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Hogwarts Crest" class="crest">
+                    <h1>HOGWARTS SCHOOL<br>of WITCHCRAFT and WIZARDRY</h1>
+                </div>
+                
+                <div class="letter-content">
+                    <p class="salutation">Dear <span id="recipientName">Wizard</span>,</p>
+                    
+                    <p>We are pleased to inform you that you have been accepted at Hogwarts School of Witchcraft and Wizardry.</p>
+                    
+                    <p>You are cordially invited to <span id="eventDetails">a magical gathering</span>.</p>
+                    
+                    <p>Please find enclosed details of your invitation:</p>
+                    
+                    <div class="event-details" id="fullEventDetails">
+                        <p><strong>Event:</strong> <span id="eventName">Magical Celebration</span></p>
+                        <p><strong>Date:</strong> <span id="eventDate">To be announced</span></p>
+                        <p><strong>Time:</strong> <span id="eventTime">When the magic calls</span></p>
+                        <p><strong>Location:</strong> <span id="eventLocation">A place of wonder</span></p>
+                    </div>
+                    
+                    <p>We await your owl by return post.</p>
+                    
+                    <p class="signature">Yours sincerely,<br><br>
+                    <em>Minerva McGonagall</em><br>
+                    Deputy Headmistress</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
