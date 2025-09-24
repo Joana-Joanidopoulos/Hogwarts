@@ -6,20 +6,20 @@ function getURLParameter(name) {
 
 // Function to personalize the letter content
 function personalizeContent() {
-    const recipientName = getURLParameter('name') || 'Wizard';
-    const eventName = getURLParameter('event') || 'Magical Celebration';
-    const eventDate = getURLParameter('date') || 'To be announced';
+    const recipientName = getURLParameter('name') || 'Hexe / Zauuberer';
+    const eventName = getURLParameter('event') || 'Halloween Party';
+    const eventDate = getURLParameter('date') || '31.10.2025';
     const eventTime = getURLParameter('time') || 'When the magic calls';
     const eventLocation = getURLParameter('location') || 'A place of wonder';
     const eventDetails = getURLParameter('details') || 'a magical gathering';
 
     // Update the letter content
-    document.getElementById('recipientName').textContent = recipientName;
-    document.getElementById('eventName').textContent = eventName;
-    document.getElementById('eventDate').textContent = eventDate;
-    document.getElementById('eventTime').textContent = eventTime;
-    document.getElementById('eventLocation').textContent = eventLocation;
-    document.getElementById('eventDetails').textContent = eventDetails;
+    if(document.getElementById('recipientName')) document.getElementById('recipientName').textContent = recipientName;
+    if(document.getElementById('eventName')) document.getElementById('eventName').textContent = eventName;
+    if(document.getElementById('eventDate')) document.getElementById('eventDate').textContent = eventDate;
+    if(document.getElementById('eventTime')) document.getElementById('eventTime').textContent = eventTime;
+    if(document.getElementById('eventLocation')) document.getElementById('eventLocation').textContent = eventLocation;
+    if(document.getElementById('eventDetails')) document.getElementById('eventDetails').textContent = eventDetails;
 }
 
 // Function to handle envelope opening
@@ -27,10 +27,11 @@ function openEnvelope() {
     const envelope = document.getElementById('envelope');
     const letterContainer = document.getElementById('letterContainer');
     const envelopeContainer = document.querySelector('.envelope-container');
-    
+    if (!envelope || !letterContainer || !envelopeContainer) return;
+
     // Add opening class to trigger flap animation
     envelope.classList.add('opening');
-    
+
     // After a delay, show the letter and hide the envelope
     setTimeout(() => {
         letterContainer.classList.add('show');
@@ -41,7 +42,7 @@ function openEnvelope() {
 // Function to create magical particle effects
 function createMagicalParticles() {
     const particleCount = 20;
-    
+
     for (let i = 0; i < particleCount; i++) {
         setTimeout(() => {
             createParticle();
@@ -58,21 +59,21 @@ function createParticle() {
     particle.style.borderRadius = '50%';
     particle.style.pointerEvents = 'none';
     particle.style.zIndex = '100';
-    
+
     // Random starting position around the envelope
     const startX = Math.random() * window.innerWidth;
     const startY = Math.random() * window.innerHeight;
-    
+
     particle.style.left = startX + 'px';
     particle.style.top = startY + 'px';
-    
+
     document.body.appendChild(particle);
-    
+
     // Animate particle
     const animationDuration = 2000 + Math.random() * 1000;
     const targetX = startX + (Math.random() - 0.5) * 200;
     const targetY = startY - 100 - Math.random() * 100;
-    
+
     particle.animate([
         {
             transform: `translate(0, 0)`,
@@ -94,28 +95,30 @@ function createParticle() {
 document.addEventListener('DOMContentLoaded', function() {
     // Personalize content based on URL parameters
     personalizeContent();
-    
+
     // Add click event to envelope
     const envelope = document.getElementById('envelope');
-    envelope.addEventListener('click', function() {
-        openEnvelope();
-        createMagicalParticles();
-    });
-    
-    // Auto-open envelope after 4 seconds if not clicked
-    setTimeout(() => {
-        if (!envelope.classList.contains('opening')) {
+    if (envelope) {
+        envelope.addEventListener('click', function() {
             openEnvelope();
             createMagicalParticles();
-        }
-    }, 4000);
-    
-    // Add some hover effects
-    envelope.addEventListener('mouseenter', function() {
-        if (!this.classList.contains('opening')) {
-            createMagicalParticles();
-        }
-    });
+        });
+
+        // Auto-open envelope after 4 seconds if not clicked
+        setTimeout(() => {
+            if (!envelope.classList.contains('opening')) {
+                openEnvelope();
+                createMagicalParticles();
+            }
+        }, 4000);
+
+        // Add some hover effects
+        envelope.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('opening')) {
+                createMagicalParticles();
+            }
+        });
+    }
 });
 
 // Add some ambient magical effects
