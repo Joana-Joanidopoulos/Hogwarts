@@ -25,9 +25,7 @@
             text-align: center;
             margin-bottom: 30px;
         }
-        .form-group {
-            margin-bottom: 20px;
-        }
+        .form-group { margin-bottom: 20px; }
         label {
             display: block;
             margin-bottom: 5px;
@@ -55,9 +53,7 @@
             margin: 20px auto;
             transition: background 0.3s;
         }
-        .generate-btn:hover {
-            background: #A0522D;
-        }
+        .generate-btn:hover { background: #A0522D; }
         .result {
             margin-top: 30px;
             padding: 20px;
@@ -65,10 +61,7 @@
             border-radius: 5px;
             border-left: 4px solid #FFD700;
         }
-        .result h3 {
-            color: #FFD700;
-            margin-bottom: 10px;
-        }
+        .result h3 { color: #FFD700; margin-bottom: 10px; }
         .invite-link {
             background: rgba(245, 245, 220, 0.9);
             color: #2F1B14;
@@ -78,69 +71,53 @@
             font-family: monospace;
             margin: 10px 0;
         }
-        .example-links {
-            margin-top: 30px;
-        }
-        .example-links h3 {
-            color: #FFD700;
-            margin-bottom: 15px;
-        }
+        .example-links { margin-top: 30px; }
+        .example-links h3 { color: #FFD700; margin-bottom: 15px; }
         .example-link {
-            display: block;
-            color: #87CEEB;
-            text-decoration: underline;
-            margin-bottom: 10px;
-            cursor: pointer;
+            display: block; color: #87CEEB; text-decoration: underline; margin-bottom: 10px; cursor: pointer;
         }
-        .example-link:hover {
-            color: #FFD700;
-        }
+        .example-link:hover { color: #FFD700; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🧙‍♂️ Hogwarts Invite Generator ⚡</h1>
-        
+
         <form id="inviteForm">
             <div class="form-group">
                 <label for="name">Recipient Name:</label>
                 <input type="text" id="name" placeholder="e.g., Harry Potter">
             </div>
-            
             <div class="form-group">
-                <label for="event">Event Name:</label>
-                <input type="text" id="event" placeholder="e.g., Birthday Party">
+                <label for="event">Event Name (Motto):</label>
+                <input type="text" id="event" placeholder="e.g., Butterbier & Beats">
             </div>
-            
             <div class="form-group">
                 <label for="date">Event Date:</label>
-                <input type="text" id="date" placeholder="e.g., July 31st">
+                <input type="text" id="date" placeholder="e.g., 31.10.2025">
             </div>
-            
             <div class="form-group">
                 <label for="time">Event Time:</label>
-                <input type="text" id="time" placeholder="e.g., 7:00 PM">
+                <input type="text" id="time" placeholder="e.g., 19:00 Uhr">
             </div>
-            
             <div class="form-group">
                 <label for="location">Event Location:</label>
-                <input type="text" id="location" placeholder="e.g., The Burrow">
+                <input type="text" id="location" placeholder="e.g., Hauptstraße 40">
             </div>
-            
             <div class="form-group">
-                <label for="details">Event Description:</label>
-                <input type="text" id="details" placeholder="e.g., a magical birthday celebration">
+                <label for="details">Extra Details (optional):</label>
+                <input type="text" id="details" placeholder="e.g., Muggelkleidung wird verhext!">
             </div>
-            
+
             <button type="submit" class="generate-btn">Generate Magical Invite</button>
         </form>
-        
+
         <div id="result" class="result" style="display: none;">
             <h3>Your Magical Invite Link:</h3>
             <div class="invite-link" id="inviteLink"></div>
             <p>Send this link to your guests and they'll receive a personalized Hogwarts letter!</p>
         </div>
-        
+
         <div class="example-links">
             <h3>Example Invites:</h3>
             <a href="index.html?name=Harry%20Potter&event=Birthday%20Party&date=July%2031st&time=7:00%20PM&location=The%20Burrow&details=a%20magical%20birthday%20celebration" class="example-link" target="_blank">
@@ -158,20 +135,20 @@
     <script>
         document.getElementById('inviteForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const baseUrl = window.location.origin + window.location.pathname.replace('example.html', 'index.html');
+
+            // Build an index.html URL that works on GitHub Pages (project subpaths)
+            const indexUrl = new URL("index.html", window.location.href).toString();
             const params = new URLSearchParams();
-            
+
             const fields = ['name', 'event', 'date', 'time', 'location', 'details'];
             fields.forEach(field => {
                 const value = document.getElementById(field).value.trim();
-                if (value) {
-                    params.append(field, value);
-                }
+                if (value) params.append(field, value);
             });
-            
-            const inviteUrl = baseUrl + '?' + params.toString();
-            document.getElementById('inviteLink').textContent = inviteUrl;
+
+            const inviteUrl = indexUrl + '?' + params.toString();
+            const out = document.getElementById('inviteLink');
+            out.textContent = inviteUrl;
             document.getElementById('result').style.display = 'block';
         });
     </script>
