@@ -139,8 +139,8 @@ body {
   height: 40px;
   transform: translateX(-50%);
   /* POINT THIS TO YOUR CREST SVG */
-  -webkit-mask-image: url('/assets/hogwarts-crest.svg');
-          mask-image: url('/assets/hogwarts-crest.svg');
+  -webkit-mask-image: url('/hogwarts-crest.png');
+          mask-image: url('/hogwarts-crest.png');
   -webkit-mask-repeat: no-repeat;    mask-repeat: no-repeat;
   -webkit-mask-position: center;     mask-position: center;
   -webkit-mask-size: contain;        mask-size: contain;
