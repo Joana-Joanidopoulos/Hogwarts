@@ -157,8 +157,7 @@ body {
   -webkit-mask-repeat: no-repeat;    mask-repeat: no-repeat;
   -webkit-mask-position: center;     mask-position: center;
   -webkit-mask-size: contain;        mask-size: contain;
-  /* “Pressed-in” look */
-  background: #000;               /* darker wax tone for imprint */
+  background: #5b0000;               /* darker wax tone for imprint */
   filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.2));
   mix-blend-mode: multiply;
   z-index: 8;
