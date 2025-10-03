@@ -25,11 +25,11 @@ body {
     radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.1), transparent),
     radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.1), transparent);
   background-size: 200px 100px;
-  animation: twinkle 4s ease-in-out infinite alternate;
+  animation: twinkle 4s ease-in;
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.8; }
+  0% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 
@@ -282,7 +282,6 @@ body {
   color: #8B4513;
 }
 
-/* ======= RESPONSIVE ======= */
 @media (max-width: 768px) {
   .envelope { width: 250px; height: 167px; }
   .letter   { width: 95vw; padding: 20px; font-size: 14px; }
@@ -290,7 +289,6 @@ body {
   .event-details { padding: 15px; }
 }
 
-/* ======= ENVELOPE HIDE AFTER OPEN (optional) ======= */
 .envelope-container.hidden {
   animation: fadeOut 1s ease-out forwards;
 }
@@ -303,7 +301,6 @@ body {
   }
 }
 
-/* ======= REDUCED MOTION ======= */
 @media (prefers-reduced-motion: reduce) {
   .envelope-container { animation: none; transform: translate(-50%, -50%) scale(1); }
   .letter-container { transition: none; }

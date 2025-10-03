@@ -53,7 +53,7 @@
 
     (function () {
         const bg = document.querySelector('.background');
-        const STAR_COUNT = 50;
+        const STAR_COUNT = 100;
         for (let i = 0; i < STAR_COUNT; i++) {
             const star = document.createElement('div');
             star.style.position = 'absolute';
