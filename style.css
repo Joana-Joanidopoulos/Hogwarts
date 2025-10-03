@@ -300,3 +300,19 @@ body {
   .envelope-container { animation: none; transform: translate(-50%, -50%) scale(1); }
   .letter-container { transition: none; }
 }
+
+.rsvp-button {
+  background: #e0d3a6; /* slightly darker than #f7efd2 */
+  color: #2F1B14;
+  font-family: 'Times New Roman', serif;
+  padding: 15px 20px;
+  font-size: 20px;
+  min-width: 200px;
+  border-radius: 8px;
+  border: 2px solid #bfa76a;
+  transition: background 0.3s;
+}
+
+.rsvp-button:hover {
+  background: #d1c28e;
+}
