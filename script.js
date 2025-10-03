@@ -2,6 +2,10 @@
     const qs = new URLSearchParams(window.location.search);
     const $ = (s) => document.querySelector(s);
 
+    // Basic HTML escape to avoid injection in personalized fields
+    const esc = (s = "") =>
+        s.toString()
+
     // Map URL params to fields with sensible defaults
     const data = {
         name: esc(qs.get("name") || "Hexe/Zauberer"),
