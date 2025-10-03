@@ -16,9 +16,11 @@ body {
 }
 
 .background {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh;
-  position: relative;
+  height: 100%;
   background-size: 200px 100px;
   animation: twinkle 4s ease-in;
 }
@@ -26,6 +28,11 @@ body {
 @keyframes twinkle {
   0% { opacity: 0.1; }
   100% { opacity: 1; }
+}
+
+.content {
+  height: 100vh;
+  overflow: auto;
 }
 
 /* ======= ENVELOPE CONTAINER ======= */
@@ -160,25 +167,22 @@ body {
 
 /* ======= LETTER (clean parchment, no stripes) ======= */
 .letter-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 8rem 1rem;
   opacity: 0;
-  visibility: hidden;
   z-index: 5;
   transition: all 1s ease-in-out;
 }
 
 .letter-container.show {
   opacity: 1;
-  visibility: visible;
   animation: letterAppear 1s ease-out;
 }
 
 @keyframes letterAppear {
-  0%   { transform: translate(-50%, -50%) scale(0.98) translateY(12px); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(1)    translateY(0);    opacity: 1; }
+  0%   { transform: scale(0.98) translateY(12px); opacity: 0; }
+  100% { transform: scale(1)    translateY(0);    opacity: 1; }
 }
 
 .letter {
@@ -193,29 +197,6 @@ body {
     #f7efd2; /* warm parchment base */
   background-blend-mode: multiply, normal;
   border-radius: 2px;
-}
-
-.letter::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(100px 80px at 30% 20%, rgba(150, 120, 70, 0.08), transparent 70%),
-    radial-gradient(140px 110px at 70% 70%, rgba(150, 120, 70, 0.06), transparent 75%);
-  z-index: 1;
-}
-
-.letter::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  box-shadow:
-    inset 0 0 80px rgba(0, 0, 0, 0.10),
-    inset 0 0 8px rgba(255, 255, 255, 0.18);
-  border-radius: 2px;
-  z-index: 2;
 }
 
 .letter-header {
@@ -279,7 +260,7 @@ body {
 
 @media (max-width: 768px) {
   .envelope { width: 250px; height: 167px; }
-  .letter   { width: 95vw; padding: 20px; font-size: 14px; }
+  .letter   { padding: 20px; font-size: 14px; }
   .letter-header h1 { font-size: 18px; }
   .event-details { padding: 15px; }
 }
