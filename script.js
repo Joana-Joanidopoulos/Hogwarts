@@ -20,7 +20,7 @@
         // Text placeholders in the letter
         const nameEl = $("#recipientName");
         const dateEl = $("#eventDate");
-        const mottoEl = $("#eventTime"); // we treat 'event' as the visible motto/title
+        const mottoEl = $("#eventTime");
         const locEl = $("#eventLocation");
         const dressEl = $("#eventDress");
 
