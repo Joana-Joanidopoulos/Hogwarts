@@ -2,19 +2,10 @@
     const qs = new URLSearchParams(window.location.search);
     const $ = (s) => document.querySelector(s);
 
-    // Basic HTML escape to avoid injection in personalized fields
-    const esc = (s = "") =>
-        s.toString()
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/\"/g, "&quot;")
-            .replace(/'/g, "&#39;");
-
     // Map URL params to fields with sensible defaults
     const data = {
         name: esc(qs.get("name") || "Hexe/Zauberer"),
-        event: esc(qs.get("event") || "Butterbier & Beats"),
+        event: esc(qs.get("event") || "Butterbeer & Beats"),
         date: esc(qs.get("date") || "31.10.2025"),
         time: esc(qs.get("time") || "19:00 Uhr"),
         location: esc(qs.get("location") || "Hauptstraße 40"),
