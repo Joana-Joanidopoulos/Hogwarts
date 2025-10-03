@@ -1,45 +1,20 @@
 (function () {
     const qs = new URLSearchParams(window.location.search);
-    const $ = (s) => document.querySelector(s);
-
-    // Basic HTML escape to avoid injection in personalized fields
-    const esc = (s = "") =>
-        s.toString()
 
     // Map URL params to fields with sensible defaults
-    const data = {
-        name: esc(qs.get("name") || "Hexe/Zauberer"),
-        event: esc(qs.get("event") || "Butterbeer & Beats"),
-        date: esc(qs.get("date") || "31.10.2025"),
-        time: esc(qs.get("time") || "19:00 Uhr"),
-        location: esc(qs.get("location") || "Hauptstraße 40"),
-        details: esc(qs.get("details") || ""),
-    };
+    const name = qs.get("name") || "Hexe/Zauberer";
 
     function populate() {
         // Text placeholders in the letter
-        const nameEl = $("#recipientName");
-        const dateEl = $("#eventDate");
-        const mottoEl = $("#eventTime");
-        const locEl = $("#eventLocation");
-        const dressEl = $("#eventDress");
+        const nameEl = document.querySelector("#recipientName");
 
-        if (nameEl) nameEl.textContent = data.name;
-        if (dateEl) dateEl.textContent = `${data.date} ${data.time}`.trim();
-        if (mottoEl) mottoEl.textContent = data.event;
-        if (locEl) locEl.textContent = data.location;
-
-        // dressEl already has a default text in HTML; we keep it unless a custom 'details' is provided
-        if (dressEl && data.details) {
-            // If details are provided, append as an extra sentence.
-            dressEl.textContent += ` — ${data.details}`;
-        }
+        if (nameEl) nameEl.textContent = name;
     }
 
     function openEnvelope() {
-        const env = $("#envelope");
-        const envWrap = $("#envelopeContainer");
-        const letter = $("#letterContainer");
+        const env = document.querySelector("#envelope");
+        const envWrap = document.querySelector("#envelopeContainer");
+        const letter = document.querySelector("#letterContainer");
         if (!env || !envWrap || !letter) return;
 
         env.classList.add("opening");
@@ -73,9 +48,9 @@
     function init() {
         populate();
 
-        const env = $("#envelope");
+        const env = document.querySelector("#envelope");
         if (env) {
-            env.addEventListener("click", openEnvelope, {once: true});
+            env.addEventListener("click", openEnvelope, { once: true });
             // Auto-open after the fly-in animation completes
             window.setTimeout(openEnvelope, 3200);
         }
