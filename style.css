@@ -65,7 +65,6 @@ body {
 }
 
 .envelope::before {
-  /* Parchment texture overlay on envelope face */
   content: '';
   position: absolute;
   inset: 0;
@@ -94,7 +93,7 @@ body {
   z-index: 1;
 }
 
-/* ======= FLAP (closed by default, opens upward on .opening) ======= */
+
 .envelope-flap {
   position: absolute;
   left: 0;
@@ -111,8 +110,7 @@ body {
   box-shadow: 0 2px 8px #0002, 0 -2px 10px #fff6 inset;
 }
 
-/* ONE wax seal (two layers at same position):
-   ::after = wax disk; ::before = masked crest imprint */
+
 .envelope-flap::after {
   content: '';
   position: absolute;
@@ -138,9 +136,8 @@ body {
   width: 40px;
   height: 40px;
   transform: translateX(-50%);
-  /* POINT THIS TO YOUR CREST SVG/PNG */
-  -webkit-mask-image: url('/hogwarts-crest.png');
-          mask-image: url('/hogwarts-crest.png');
+  -webkit-mask-image: url('hogwarts-crest.png');
+          mask-image: url('hogwarts-crest.png');
   -webkit-mask-repeat: no-repeat;    mask-repeat: no-repeat;
   -webkit-mask-position: center;     mask-position: center;
   -webkit-mask-size: contain;        mask-size: contain;
