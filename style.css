@@ -156,6 +156,14 @@ body {
   transform: rotateX(-180deg);
 }
 
+/* Seal ausblenden, wenn die Flap geöffnet wird */
+.envelope.opening .envelope-flap::before,
+.envelope.opening .envelope-flap::after {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+
 /* Remove hover wobble to avoid competing transforms */
 .envelope:hover .envelope-flap { transform: rotateX(0deg); }
 
